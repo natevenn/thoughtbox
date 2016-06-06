@@ -9,6 +9,11 @@ class Api::V1::LinksController < Api::V1::BaseController
     render json: current_user.links.create(link_params), location: nil
   end
 
+  def update
+    link = Link.find(params[:id])
+    respond_with link.update(link_params)
+  end
+
   private
     def link_params
       params.require(:link).permit(:title, :url, :read_status)

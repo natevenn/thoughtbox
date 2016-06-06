@@ -1,11 +1,14 @@
 $(document).ready(function() {
 
+  var $body = $('body');
 
  fetchAllLinks();
 
   $('.save-btn').click(function() {
     CreateLink();
   })
+
+  $body.on('click', 'a.readStatus', updateReadStatus);
 
 });
 
@@ -25,6 +28,22 @@ function sortLinks(links) {
     })
 }
 
+
+function updateLinkTable(id, params) {
+    $.ajax({
+        url: '/api/v1/links/' + id,
+        method: 'PUT',
+        dataType: 'json',
+        data: params,
+        success: function() {
+            console.log('success')
+        }
+    });
+}
+
 function renderLink(link) {
-    $('.table').append('<tr><td>' + link.title + '</td><td>' + link. url + '</td><td>' + link.read_status + '</td></tr>')
+  $('.table').append('<tr class=link><td>' + link.title
+                     + '</td><td>' + link. url
+                     + '</td><td>' + link.read_status
+                     + '  <a class=readStatus id=' + link.id + ' href=#>Mark as read</a></td></tr>')
   }
