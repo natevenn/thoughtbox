@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature 'Vistior can login' do
-  scenario 'when a user visits / they can login and see their dashboard' do
+RSpec.feature 'User can logout' do
+  scenario 'when a user visits / they are login and can see a logout link that logs them out and return to root' do
     user = User.create(email: 'test@email.com', password: 'password', password_confirmation: 'password')
     visit '/'
 
@@ -12,6 +12,9 @@ RSpec.feature 'Vistior can login' do
 
     expect(current_path).to eq '/dashboard'
     expect(page).to have_content 'Logged in as test@email.com'
+    click_on "Logout"
+    expect(current_path).to eq '/'
   end
 
 end
+

@@ -13,6 +13,7 @@ RSpec.feature 'Vistior can sign up' do
     click_on 'Signup'
 
     expect(current_path).to eq '/dashboard'
+    expect(page).to have_content 'Logged in as test@email.com'
   end
 
 end
