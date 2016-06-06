@@ -6,9 +6,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <%#<% if current_user %>%>
-          <%#<li><%= link_to "Logout", logout_path, method: :delete </li>%>%>
-        <%#<% end %>%>
+        <% if current_user %>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% end %>
       </ul>
     </div>
   </div>

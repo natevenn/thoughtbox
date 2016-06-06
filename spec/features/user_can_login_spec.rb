@@ -11,6 +11,7 @@ RSpec.feature 'Vistior can login' do
     click_on 'Login'
 
     expect(current_path).to eq '/dashboard'
+    expect(page).to have_content 'Logged in as test@email.com'
   end
 
 end

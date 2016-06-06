@@ -2,15 +2,15 @@ class UsersController < ApplicationController
   def new
   end
 
-  def create
+ def create
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "You have signed in as #{@user.email}"
-      redirect_to '/dashboard'
+      flash[:notice] = "Logged in as #{@user.email}"
+      redirect_to dashboard_path
     else
-      flash.now[:alert] = "Please try again"
-      render :new
+      flash[:notice] = "Invalid Login"
+      redirect_to root_path
     end
   end
 
