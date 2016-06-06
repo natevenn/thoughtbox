@@ -1,0 +1,38 @@
+<h1>Welcome to ThoughtBox</h1>
+
+<div class="container sign-up-div">
+  <div class="row text-center">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <h1><small>Sign In</small></h1>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group text-center form-div">
+        <%= form_for :session, url: '/login' do |f| %>
+          <%= f.label :email, class:"sr-only"  %>
+          <%= f.email_field :email, placeholder: "email", class:"form-control text-input" %><br>
+          <%= f.label :password, class:"sr-only"  %>
+          <%= f.password_field :password, placeholder: "password", class:"form-control text-input" %><br>
+          <%= f.label :password_confirmation, class:'sr-only' %>
+          <%= f.password_field :password_confirmation, placeholder: "password confirmation", class:"form-control text-input" %><br>
+          <%= f.submit "Login", class:"btn" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="container col-xs-12 text-center">
+      <h3>Or if you don't have an account click the Sign up button</h3>
+      <%= link_to('Sign up', '/signup') %>
+    </div>
+  </div>
+</div>
+
+
