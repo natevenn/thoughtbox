@@ -15,6 +15,8 @@ function fetchAllLinks() {
   });
 }
 
+var readStatus = { 0:'unread', 1:'read' }
+
 function sortLinks(links) {
     $(links).sort(function(a, b){
         return a.id - b.id

@@ -7,7 +7,6 @@ class Api::V1::LinksController < Api::V1::BaseController
 
   def create
     render json: current_user.links.create(link_params), location: nil
-    byebug
   end
 
   private
