@@ -1,6 +1,6 @@
 function CreateLink(){
     var $form = $('#form');
-    var postParams = { link: { title: $form.find('#title').val(), url: $form.find('#url').val(), read_status: readStatus[0] } }
+    var postParams = { link: { title: $form.find('#title').val(), url: $form.find('#url').val(), read_status: 'unread' } }
     debugger
     $.ajax({
         url: '/api/v1/links',

@@ -18,7 +18,7 @@ function fetchAllLinks() {
   });
 }
 
-var readStatus = { 0:'unread', 1:'read' }
+var readStatus = { read:'Mark as unread', unread:'Mark as read' }
 
 function sortLinks(links) {
     $(links).sort(function(a, b){
@@ -42,8 +42,17 @@ function updateLinkTable(id, params) {
 }
 
 function renderLink(link) {
-  $('.table').append('<tr class=link><td>' + link.title
+ var highLighted = checkIfRead(link.read_status)
+  $('.table').append('<tr class=' + highLighted + '><td>' + link.title
                      + '</td><td>' + link. url
                      + '</td><td>' + link.read_status
-                     + '  <a class=readStatus id=' + link.id + ' href=#>Mark as read</a></td></tr>')
+                     + '  <a class=readStatus id=' + link.id + ' href=#>' + readStatus[link.read_status] + '</a></td></tr>')
+  }
+
+  function checkIfRead(status) {
+    if(status === 'read'){
+      return 'strikeout'
+    }else{
+      return ''
+    }
   }
