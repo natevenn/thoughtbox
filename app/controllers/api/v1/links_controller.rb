@@ -6,7 +6,13 @@ class Api::V1::LinksController < Api::V1::BaseController
   end
 
   def create
-    render json: current_user.links.create(link_params), location: nil
+    new_link = current_user.links.new(link_params)
+    if new_link.save
+      render json: new_link
+    else
+      render :json => { :errors => new_link.errors.full_messages }, :status => 422
+      flash.now[:error] = "Invalid Url"
+    end
   end
 
   def update

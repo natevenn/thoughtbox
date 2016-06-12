@@ -10,6 +10,7 @@ $(document).ready(function() {
 
   $body.on('click', 'a.readStatus', updateReadStatus);
 
+  $('.error').hide();
 });
 
 function fetchAllLinks() {

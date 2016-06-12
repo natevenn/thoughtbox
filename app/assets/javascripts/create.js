@@ -1,18 +1,24 @@
 function CreateLink(){
     var $form = $('#form');
     var postParams = { link: { title: $form.find('#title').val(), url: $form.find('#url').val(), read_status: 'unread' } }
-    debugger
     $.ajax({
         url: '/api/v1/links',
         type: 'POST',
         dataType: 'json',
         data: postParams,
         success: function(link){
-          console.log('success')
             renderLink(link);
             clearForm($form);
+        },
+        error: function(xhr, textStatus, error) {
+          sendErrorMsg();
+          clearForm($form);
         }
     });
+}
+
+function sendErrorMsg() {
+  $("#url").after('<br><span class="error">Invalid Url</span>');
 }
 
 function clearForm($form){
