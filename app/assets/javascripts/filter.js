@@ -24,7 +24,7 @@ function alphabetizLinks() {
       return 0;
     }
   }).each(function(index, row) {
-    $('.table').append(row)
+    $('.table').prepend(row)
   });
 }
 
