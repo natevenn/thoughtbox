@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/signup', to: 'users#new'
-  resources :links, only: [:create, :update]
+  resources :links
   post '/users', to: 'users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
