@@ -47,7 +47,8 @@ function renderLink(link) {
   $('.table').append('<tr class=' + highLighted + '><td>' + link.title
                      + '</td><td>' + link. url
                      + '</td><td>' + link.read_status
-                     + '  <a class=readStatus id=' + link.id + ' href=#>' + readStatus[link.read_status] + '</a></td></tr>')
+                     + '  <a class=readStatus id=' + link.id + ' href=#>' + readStatus[link.read_status]
+                     + '</a> <a href=/links' + link.id + '/edit>Edit</a></td></tr>')
   }
 
   function checkIfRead(status) {
