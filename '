@@ -1,0 +1,61 @@
+$(document).ready(function() {
+
+  var $body = $('body');
+
+ fetchAllLinks();
+
+  $('.save-btn').click(function() {
+    CreateLink();
+  })
+
+  $body.on('click', 'a.readStatus', updateReadStatus);
+
+  $('.error').hide();
+});
+
+function fetchAllLinks() {
+  $.getJSON('/api/v1/links', function(links) {
+    sortLinks(links)
+  });
+}
+
+var readStatus = { read:'Mark as unread', unread:'Mark as read' }
+
+function sortLinks(links) {
+    $(links).sort(function(a, b){
+        return a.id - b.id
+    }).each(function(index, link) {
+        renderLink(link);
+    })
+}
+
+
+function updateLinkTable(id, params) {
+    $.ajax({
+        url: '/api/v1/links/' + id,
+        method: 'PUT',
+        dataType: 'json',
+        data: params,
+        success: function() {
+            console.log('success')
+        }
+    });
+}
+
+function renderLink(link) {
+ var highLighted = checkIfRead(link.read_status)
+  $('.table').append('<tr id=' + link.id + ' class=' + highLighted + '><td class=title contentEditable=true>' + link.title
+                     + '</td><td class=url contentEditable=true>' + link. url
+                     + '</td><td class=visible id=unread-status-' + link.id + '>' + link.read_status
+                     + '  <a class=readStatus id=mark-status-' + link.id + ' href=#>' + readStatus[link.read_status]
+                     + '</a></td><td class=hidden> id=read-status-' + link.id + '>' + link.read_status + ' <a class=readStatus id=mark-status-'
+                     + link.id ' href=#>' + readStatus[link.read_status]</tr>')
+  }
+
+  function checkIfRead(status) {
+    if(status === 'read'){
+      return 'strikeout'
+    }else{
+      return ''
+    }
+  }

@@ -3,24 +3,26 @@ function updateReadStatus(event) {
   var status = $(this).text();
   var linkId = $(this).attr('id');
   var tableData = $(this).closest('tr')[0]
-  var newReadStatus = changeStatus(status, tableData)
+  var newReadStatus = changeStatus(linkId, status, tableData)
   var tableStatus = changeStatusTable(status)
   var params = { link: { read_status: tableStatus } }
   updateLinkTable(linkId, params)
-  renderReadStatusButton(linkId, newReadStatus)
+  //renderReadStatusButton(linkId, newReadStatus)
 }
 
 function renderReadStatusButton(id, status) {
   $('#' + id).text(status)
 }
 
-function changeStatus(status, tableData) {
+function changeStatus(linkId, status, tableData) {
   if(status === 'Mark as read') {
     highLight(tableData);
-    return 'Mark as unread'
+    var newStatus = '<td>read <a class=readStatus id=' + linkId + ' href=#>Mark as unread</a></td>'
+    $('#' + linkId).parent().replaceWith(newStatus)
   }else{
     unhighLight(tableData);
-    return 'Mark as read'
+    var newStatus = '<td>unread <a class=readStatus id=' + linkId + ' href=#>Mark as read</a></td>'
+    $('#' + linkId).parent().replaceWith(newStatus)
   }
 }
 
