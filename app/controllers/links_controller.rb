@@ -10,7 +10,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     if @link.update(link_params)
       flash[:success] = "Updated link"
-      redirect_to
+      redirect_to dashboard_path
     else
       flash.now[:notice] = "Invalid url or field was left blank"
       render :edit

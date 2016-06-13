@@ -48,7 +48,7 @@ function renderLink(link) {
                      + '</td><td>' + link. url
                      + '</td><td>' + link.read_status
                      + '  <a class=readStatus id=' + link.id + ' href=#>' + readStatus[link.read_status]
-                     + '</a> <a href=/links' + link.id + '/edit>Edit</a></td></tr>')
+                     + '</a> <a href=/links/' + link.id + '/edit>Edit</a></td></tr>')
   }
 
   function checkIfRead(status) {
