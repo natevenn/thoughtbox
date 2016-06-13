@@ -18,10 +18,10 @@ function alphabetizLinks() {
     var titleA = $(a).children('#title').text().toLowerCase().charAt(0);
     var titleB = $(b).children('#title').text().toLowerCase().charAt(0);
     if (titleA < titleB) {
-      return 1;
+      return 0;
     }
     if (titleA > titleB) {
-      return 0;
+      return 1;
     }
   }).each(function(index, row) {
     $('.table').append(row)
