@@ -3,6 +3,7 @@ $(document).ready(function() {
   var $body = $('body');
 
  fetchAllLinks();
+ showSearchedResults();
 
   $('.save-btn').click(function() {
     CreateLink();
@@ -44,7 +45,7 @@ function updateLinkTable(id, params) {
 
 function renderLink(link) {
  var highLighted = checkIfRead(link.read_status)
-  $('.table').append('<tr class=' + highLighted + '><td>' + link.title
+  $('.table').append('<tr class=links' + highLighted + ' id=link-' + link.id + '><td id=title>' + link.title
                      + '</td><td>' + link. url
                      + '</td><td>' + link.read_status
                      + '  <a class=readStatus id=' + link.id + ' href=#>' + readStatus[link.read_status]
