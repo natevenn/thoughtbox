@@ -1,6 +1,5 @@
 # ThoughtBox
 
- * This was an app that I build for a Module 4 mock assessment at the Turing School of Software and Design.
  * ThoughtBox is a app that a user can create links, update links, and change the status of the link to read or unread. A user can filter their links by read, unread, and all. 
  
 ### technologies
