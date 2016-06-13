@@ -3,3 +3,7 @@ tr.strikeout {
     background-color: #D3D3D3;
     width: 100%;
 }
+
+.filter-buttons {
+  text-align: center;
+}

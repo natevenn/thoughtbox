@@ -17,7 +17,7 @@ function renderReadStatusButton(id, status) {
 function changeStatus(linkId, status, tableData) {
   if(status === 'Mark as read') {
     highLight(tableData);
-    var newStatus = '<td>read <a class=readStatus id=' + linkId + ' href=#>Mark as unread</a> <a href=/links/' + linkId + '/edit>Edit</a></td>'
+    var newStatus = '<td class=read-status>read <a class=readStatus id=' + linkId + ' href=#>Mark as unread</a> <a href=/links/' + linkId + '/edit>Edit</a></td>'
     $('#' + linkId).parent().replaceWith(newStatus)
   }else{
     unhighLight(tableData);
